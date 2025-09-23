@@ -1,0 +1,137 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "filters": {}
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "7578b307-d27f-45dc-8225-05e8284de39a",
+      "name": "Gmail Trigger",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "WgqXtRHFrHMYjV7i",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a very intelligent response AI model,draft a reply message to the below snippet {{ $json.snippet }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "efc67688-7a52-4c7c-be6c-731b34c09f0b",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        80,
+        208
+      ],
+      "id": "32804a69-f1d9-4d20-a736-d905e5aa8d75",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "IMROtVji3IEgUqRL",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "kgreeshmareddy2004@gmail.com",
+        "subject": "Greetings",
+        "message": "=I hope you are doing good {{ $json.output }}",
+        "options": {
+          "appendAttribution": true
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        560,
+        160
+      ],
+      "id": "3d0298d2-7ecf-4fef-85db-3e424c3896f6",
+      "name": "Send a message",
+      "webhookId": "e3b530bd-8a2c-407b-a646-c3cc5bfd8338",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "WgqXtRHFrHMYjV7i",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "e548f81e-c5b2-4a1f-9a1a-ce4a7f8af13e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "7f60ae0e71a65d469f3c0fb6d939a3a4b52b8379d5ca2763b4aaa45f81478148"
+  },
+  "id": "NmpJqtrZhY0WVTyx",
+  "tags": []
+}
