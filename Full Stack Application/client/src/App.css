@@ -1,0 +1,56 @@
+:root {
+    --primary-color: #2563eb;
+    --primary-light: #3b82f6;
+    --secondary-color: #64748b;
+    --success-color: #22c55e;
+    --danger-color: #ef4444;
+}
+
+body {
+    background: linear-gradient(135deg, #e0e7ff 0%, #f0fdfa 100%);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.btn {
+    border-radius: 8px !important;
+    padding: 0.5rem 1.2rem !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+.btn-primary {
+    background: var(--primary-color) !important;
+    border: none !important;
+}
+
+.btn-primary:hover {
+    background: var(--primary-light) !important;
+    transform: translateY(-1px);
+}
+
+.form-control {
+    border-radius: 8px !important;
+    padding: 0.75rem !important;
+    border: 1.5px solid #e2e8f0 !important;
+    transition: all 0.2s ease !important;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+}
+
+.navbar {
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-light)) !important;
+    padding: 1rem 0 !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    color: white !important;
+    font-weight: 700 !important;
+    font-size: 1.5rem !important;
+    letter-spacing: 0.5px;
+}
