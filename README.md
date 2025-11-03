@@ -28,6 +28,37 @@ This bot acts as a **smart study assistant**. It connects to your **Notion datab
 
 ##  System Architecture
 
+```mermaid
+flowchart LR
+    subgraph Frontend_Client[Frontend / Client]
+        A[User - Telegram App]
+    end
+
+    subgraph Application_Runtime[Application and Runtime]
+        B[Telegram Bot]
+        C[Authentication and API Handler]
+    end
+
+    subgraph External_Services[External Services]
+        D[Notion Database or API]
+        E[Google Calendar API]
+        F[OpenAI API - GPT-4o-mini]
+    end
+
+    A -->|/plan or /summary| B
+    B --> C
+    C --> D
+    C --> E
+    C --> F
+    D --> B
+    E --> B
+    F --> B
+    B -->|Final Output| A
+
+    %% Make all links cleaner and uniform
+    linkStyle default stroke:#333,stroke-width:2px,fill:none;
+```
+
 ##  Functional Flow
 
 ### **Summary Generation Flow**
@@ -219,3 +250,6 @@ python main.py
 ```
 Execution Video link:
 https://drive.google.com/file/d/1_GQU1HvyWF5anP9G7Q_rIWwdwKLsP7pS/view?usp=sharing
+
+Presentation(ppt slides) link : 
+https://www.canva.com/design/DAG3jGN7pQA/T4X5EEpkmhJCrMEtK80YOA/edit
