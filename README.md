@@ -217,3 +217,5 @@ ADMIN_TELEGRAM_ID=123456789
 ```bash
 python main.py
 ```
+Execution Video link:
+https://drive.google.com/file/d/1_GQU1HvyWF5anP9G7Q_rIWwdwKLsP7pS/view?usp=sharing
